@@ -73,14 +73,14 @@ ChartView {
 
     LineSeries {
         id: lineSeries1
-        name: "발전량"
+        name: "부하전력"
         axisX: axisX
         axisY: axisY1
         useOpenGL: chartView.openGL
     }
     LineSeries {
         id: lineSeries2
-        name: "부하전력"
+        name: "발전량"
         axisX: axisX
         axisYRight: axisY2
         useOpenGL: chartView.openGL
@@ -131,7 +131,7 @@ ChartView {
         // Create two new series of the correct type. Axis x is the same for both of the series,
         // but the series have their own y-axes to make it possible to control the y-offset
         // of the "signal sources".
-        if (type == "line") {
+        if (type === "line") {
             var series1 = chartView.createSeries(ChartView.SeriesTypeLine, "발전량",
                                                  axisX, axisY1);
             series1.useOpenGL = chartView.openGL
@@ -139,14 +139,15 @@ ChartView {
             var series2 = chartView.createSeries(ChartView.SeriesTypeLine, "부하전력",
                                                  axisX, axisY2);
             series2.useOpenGL = chartView.openGL
-        } else {
-            var series1 = chartView.createSeries(ChartView.SeriesTypeScatter, "발전량",
+        }
+        else {
+            series1 = chartView.createSeries(ChartView.SeriesTypeScatter, "발전량",
                                                  axisX, axisY1);
             series1.markerSize = 2;
             series1.borderColor = "transparent";
             series1.useOpenGL = chartView.openGL
 
-            var series2 = chartView.createSeries(ChartView.SeriesTypeScatter, "부하전력",
+            series2 = chartView.createSeries(ChartView.SeriesTypeScatter, "부하전력",
                                                  axisX, axisY2);
             series2.markerSize = 2;
             series2.borderColor = "transparent";

@@ -36,7 +36,7 @@ import QtQuick.Window 2.12
 
 ColumnLayout {
     spacing: 8
-    Layout.fillHeight: true
+    //Layout.fillHeight: true
     signal animationsEnabled(bool enabled)
     signal seriesTypeChanged(string type)
     signal refreshRateChanged(variant rate);

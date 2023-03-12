@@ -59,40 +59,17 @@ Rectangle {
     GridLayout {
         anchors.fill: parent
         rows: 1
-        columns: 3
-
-        Rectangle {
-            Layout.leftMargin: 10
-            Layout.topMargin: 20
-            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-//            Image {
-//                id: arrow
-//                source: "./images/icon-left-arrow.png"
-//                visible: root.currentIndex == 1 ? true : false
-
-//                MouseArea {
-//                    anchors.fill: parent
-//                    onClicked: root.currentIndex = 0;
-//                }
-//            }
-        }
+        columns: 2
 
         Text {
-            id: stocText
+            id: mainNameText
             color: "#ffffff"
             font.family: "Abel"
             font.pointSize: 40
-            text: "마이크로그리드 수차제어 "
+            text: "<font color='#ffffff'>마이크로그리드 수차제어</font> <font color='#5caa15'>AI S/W</font>"
+            //text: "마이크로그리드 수차제어"
             Layout.alignment: Qt.AlignCenter
-            Layout.leftMargin: parent.width / 6
         }
-        Text {
-            id: qtText
-            color: "#5caa15"
-            font.family: "Abel"
-            font.pointSize: 40
-            text: "AI S/W"
-            Layout.fillWidth: true
-        }
+
     }
 }

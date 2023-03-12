@@ -95,7 +95,10 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
-    qml/qmloscilloscope/*
+    Custombutton.qml \
+    qml/qmloscilloscope/* \
+    source/image/enter.png \
+    source/image/enter2.png
 
 target.path = $$[QT_INSTALL_EXAMPLES]/charts/qmloscilloscope
 INSTALLS += target

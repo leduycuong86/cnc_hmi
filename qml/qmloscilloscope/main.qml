@@ -38,55 +38,54 @@ Item {
     width: Screen.desktopAvailableWidth
     height: Screen.desktopAvailableHeight
 
-    Banner {
-        id: banner
-        width: parent.width
-        height: 80
-        anchors.top: parent.top
-        anchors.topMargin: 10
+    function getCurentMonth(){
+        var now = new Date();
+        var currentMonth = Qt.formatDateTime(now, "M");
+        return currentMonth
     }
 
-    ControlPanel {
-        id: controlPanel
-        anchors.top: banner.bottom
-        anchors.topMargin: 10
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.leftMargin: 10
-//![1]
-
-        onSignalSourceChanged: {
-            if (source == "sin")
-                dataSource.generateData(0, signalCount, 25);
-            else
-                dataSource.generateData(1, signalCount, 25);
-            scopeView.axisX().max = sampleCount;
-        }
-        onSeriesTypeChanged: scopeView.changeSeriesType(type);
-        onRefreshRateChanged: scopeView.changeRefreshRate(rate);
-        onAntialiasingEnabled: scopeView.antialiasing = enabled;
-        onOpenGlChanged: {
-            scopeView.openGL = enabled;
-        }
+    Component.onCompleted: {
+        var currentMonth = getCurentMonth()
+        console.info("Load data in current month: ", currentMonth)
+        scopeView.updateLineSeries(currentMonth - 1)
     }
 
-//![2]
-    ScopeView {
-        id: scopeView
-        anchors.top: banner.bottom
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-        anchors.left: controlPanel.right
-        height: main.height
+    ColumnLayout {
+        anchors.fill: parent
+         Layout.leftMargin: 20
 
-        onOpenGLSupportedChanged: {
-            if (!openGLSupported) {
-                controlPanel.openGLButton.enabled = false
-                controlPanel.openGLButton.currentSelection = 0
+        Banner {
+            id: banner
+            height: 80
+            Layout.fillWidth: true
+            anchors.top: parent.top
+            anchors.right: parent.right
+            anchors.left: parent.left
+        }
+
+        ScopeView {
+            id: scopeView
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            anchors.right: parent.right
+            anchors.left: parent.left
+            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+            onOpenGLSupportedChanged: {
+
+
             }
         }
+
+        MeasurementPanel{
+            id: measurePanel
+            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+            Layout.fillWidth: true
+            anchors.right: parent.right
+            anchors.left: parent.left
+            anchors.bottom: parent.bottom
+            height: 200
+
+
+        }
     }
-
-//![2]
-
 }

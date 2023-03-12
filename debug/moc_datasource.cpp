@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../datasource.h"
+#include "../cnc_hmi/datasource.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

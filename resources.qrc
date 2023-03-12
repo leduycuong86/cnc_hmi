@@ -8,5 +8,9 @@
         <file>qml/qmloscilloscope/StockListModel.qml</file>
         <file>qml/qmloscilloscope/StockListDelegate.qml</file>
         <file>qml/qmloscilloscope/Settings.qml</file>
+        <file>qml/qmloscilloscope/MeasurementPanel.qml</file>
+        <file>qml/qmloscilloscope/CustomButton.qml</file>
+        <file>source/image/enter.png</file>
+        <file>source/image/enter2.png</file>
     </qresource>
 </RCC>
