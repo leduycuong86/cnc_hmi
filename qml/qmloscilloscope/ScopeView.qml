@@ -64,6 +64,11 @@ ChartView {
         min: 0
         max: 40
     }
+//    ValueAxis {
+//        id: axisY3
+//        min: 0
+//        max: 40
+//    }
 
     ValueAxis {
         id: axisX
@@ -85,7 +90,21 @@ ChartView {
         axisYRight: axisY2
         useOpenGL: chartView.openGL
     }
+    LineSeries {
+        id: lineSeries3
+        name: "현재 시간"
+        axisX: axisX
+        axisYRight: axisY2
+        useOpenGL: chartView.openGL
+    }
 //![1]
+    function getCurentTime(){
+        var currentTime = new Date();
+        var totalMilliseconds = (currentTime.getHours() * 60 * 60 * 1000) + (currentTime.getMinutes() * 60 * 1000) + (currentTime.getSeconds() * 1000) + currentTime.getMilliseconds();
+        var floatOfDay24h = totalMilliseconds / (60 * 60 * 1000);
+        console.log("Current time in float of day 24h format:", floatOfDay24h);
+        return floatOfDay24h
+    }
 
     function updateLineSeries(index) {
         setAnimations(true);
@@ -102,25 +121,32 @@ ChartView {
             //console.log("index: " + (2+index))
             lineSeries2.append(x, y) // append the new point to the series
         }
-        //lineSeries2.replace(0, 24, newData);
-
+    }
+    function updateLineSeriesTimer(index) {
+        setAnimations(true);
+        lineSeries3.clear()
+        console.log("count: " + lineSeries3.count)
+        var newData = [];
+        // update chart 3
+        for (var i = 0; i < 40; i++) {
+            var x = index // get the current number of points in the series
+            var y = i
+            newData.push(x, y);
+            //console.log("index: " + (2+index))
+            lineSeries3.append(x, y) // append the new point to the series
+        }
     }
 
     //![2]
-//    Timer {
-//        id: refreshTimer
-//        interval: 1 / 60 * 1000 // 60 Hz
-//        running: true
-//        repeat: true
-//        onTriggered: {
-//            dataSource.update(chartView.series(0));
-//            for (var i = 0; i < 24; i++) {
-//                var x = lineSeries2.count // get the current number of points in the series
-//                var y = dataSource.loadFromExcel(i+8,2+globalVariable_col)
-//                lineSeries2.append(x, y) // append the new point to the series
-//            }
-//        }
-//    }
+    Timer {
+        id: refreshTimer
+        interval: 300*1000 // 1000 ms = 1 second
+        running: true
+        repeat: true
+        onTriggered: {
+            updateLineSeriesTimer(getCurentTime())
+        }
+    }
     //![2]    
 
 
@@ -139,6 +165,10 @@ ChartView {
             var series2 = chartView.createSeries(ChartView.SeriesTypeLine, "부하전력",
                                                  axisX, axisY2);
             series2.useOpenGL = chartView.openGL
+
+            var series3 = chartView.createSeries(ChartView.SeriesTypeLine, "현재 시간",
+                                                 axisX, axisY3);
+            series3.useOpenGL = chartView.openGL
         }
         else {
             series1 = chartView.createSeries(ChartView.SeriesTypeScatter, "발전량",
@@ -152,6 +182,12 @@ ChartView {
             series2.markerSize = 2;
             series2.borderColor = "transparent";
             series2.useOpenGL = chartView.openGL
+
+            series3 = chartView.createSeries(ChartView.SeriesTypeScatter, "현재 시간",
+                                                 axisX, axisY3);
+            series3.markerSize = 2;
+            series3.borderColor = "transparent";
+            series3.useOpenGL = chartView.openGL
         }
     }
 

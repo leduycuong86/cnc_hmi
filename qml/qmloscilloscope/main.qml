@@ -48,6 +48,9 @@ Item {
         var currentMonth = getCurentMonth()
         console.info("Load data in current month: ", currentMonth)
         scopeView.updateLineSeries(currentMonth - 1)
+
+        var currentTime = scopeView.getCurentTime()
+        scopeView.updateLineSeriesTimer(currentTime)
     }
 
     ColumnLayout {
