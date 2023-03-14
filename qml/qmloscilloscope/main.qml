@@ -71,21 +71,17 @@ Item {
             anchors.left: parent.left
             Layout.alignment: Qt.AlignLeft | Qt.AlignTop
             onOpenGLSupportedChanged: {
-
-
             }
         }
 
         MeasurementPanel{
             id: measurePanel
-            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+            Layout.alignment: Qt.AlignLeft | Qt.AlignTo
             Layout.fillWidth: true
             anchors.right: parent.right
             anchors.left: parent.left
             anchors.bottom: parent.bottom
-            height: 200
-
-
-        }
+            height: 400
+        }        
     }
 }

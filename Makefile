@@ -280,6 +280,7 @@ Makefile: qmloscilloscope.pro C:/Qt/Qt5.14.2/5.14.2/mingw73_64/mkspecs/win32-g++
 		C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5QmlModels.prl \
 		C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5Qml.prl \
 		C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5Network.prl \
+		C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5SerialBus.prl \
 		C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5Core.prl \
 		C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/qtmain.prl \
 		C:/Qt/Qt5.14.2/5.14.2/mingw73_64/mkspecs/features/build_pass.prf \
@@ -495,6 +496,7 @@ C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5Gui.prl:
 C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5QmlModels.prl:
 C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5Qml.prl:
 C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5Network.prl:
+C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5SerialBus.prl:
 C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/Qt5Core.prl:
 C:/Qt/Qt5.14.2/5.14.2/mingw73_64/lib/qtmain.prl:
 C:/Qt/Qt5.14.2/5.14.2/mingw73_64/mkspecs/features/build_pass.prf:

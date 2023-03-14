@@ -16,7 +16,6 @@ Rectangle {
     ColumnLayout {
         id: measurePanel
         anchors.fill: parent
-        spacing: 10
 
         Text {
             id: introText
@@ -28,7 +27,7 @@ Rectangle {
 
         // Wheel 1
         RowLayout{
-            spacing: 20
+            spacing: 30
 
             Text {
                 text: " 1 호지"
@@ -63,11 +62,10 @@ Rectangle {
                     onTextChanged: {
                         wheel1Value = parseInt(valueWheel1.text)
                         console.debug("Wheel 1 Setup Value Changed: ", wheel1Value)
-
                         }
                     }
                 }
-             CustomButton{
+            CustomButton{
                 id: btWheel1
                 text: ""
                 width: 100
@@ -78,10 +76,14 @@ Rectangle {
                     updateWheel1Value()
                 }
              }
+
+            TurbinPanel{
+                id: turbinList1
+            }
          }
          // Wheel 2
         RowLayout{
-            spacing: 20
+            spacing: 30
             Text {
                 text: " 2 호지"
                 color: "#ffffff"
@@ -113,7 +115,6 @@ Rectangle {
                     onTextChanged: {
                         wheel2Value = parseInt(valueWheel2.text)
                         console.debug("Wheel 2 Setup Value Changed: ", wheel2Value)
-
                     }
                 }
             }
@@ -126,10 +127,10 @@ Rectangle {
                     console.log("Update Wheel 2 measurement value to ", wheel2Value)
                     updateWheel2Value()
                     }
-
                 }
-
+            TurbinPanel{
+                id: turbinList2
             }
-
         }
+    }
 }
